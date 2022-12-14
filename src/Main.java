@@ -7,7 +7,7 @@ class Conecta4 {
     int jugador = 1;
     boolean bingo;
 
-    void mostrarTablero(){
+    void mostrarTablero() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 if (tablero[i][j] == 0) {
@@ -29,11 +29,11 @@ class Conecta4 {
 
     void colocarFicha() {
         for (int i = 5; i >= 0; i--) {
-            if (tablero[i][columna] == 0){
+            if (tablero[i][columna] == 0) {
                 tablero[i][columna] = jugador;
                 break;
             }
-        }    
+        }
     }
 
     void cambiarTurno() {
@@ -44,21 +44,42 @@ class Conecta4 {
         }
     }
 
-    void comprobarGanador() {
-        int contador = 1;
-        for (int j = 1; j < 7; j++) {
-            if (tablero[5][j] == tablero[5][j-1] && tablero[5][j] != 0) {
-                contador++;
-            } else {
-                contador = 1;
-            }
+    void comprobarGanador(){
+        for (int i = 0; i < 6; i++) {
+            int contador = 1;
+            for (int j = 1; j < 7; j++) {
+                if (tablero[i][j] == tablero[i][j - 1] && tablero[i][j] != 0) {
+                    contador++;
+                } else {
+                    contador = 1;
+                }
 
-            if (contador == 4) {
-                bingo = true;
-                break;
+                if (contador == 4) {
+                    bingo = true;
+                    return;
+                }
             }
         }
 
+
+        for (int j = 0; j < 7; j++) {
+            int contador = 1;
+            for (int i = 5; i > 0; i--) {
+                if (tablero[i][j] == tablero[i - 1][j] && tablero[i][j] != 0) {
+                    contador++;
+                } else {
+                    contador = 1;
+                }
+
+                if (contador == 4) {
+                    bingo = true;
+                    return;
+                }
+
+            }
+        }
+
+        // DIAGONAL jajajajaaa
     }
 }
 
@@ -68,7 +89,7 @@ public class Main {
 
         Conecta4 conecta4 = new Conecta4();
 
-        for(;;) {
+        for (; ; ) {
             conecta4.mostrarTablero();
             conecta4.comprobarGanador();
             if (conecta4.bingo) {
