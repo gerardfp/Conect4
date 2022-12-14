@@ -5,6 +5,7 @@ class Conecta4 {
     int[][] tablero = new int[6][7];
     int columna;
     int jugador = 1;
+    boolean bingo;
 
     void mostrarTablero(){
         for (int i = 0; i < 6; i++) {
@@ -42,6 +43,23 @@ class Conecta4 {
             jugador = 1;
         }
     }
+
+    void comprobarGanador() {
+        int contador = 1;
+        for (int j = 1; j < 7; j++) {
+            if (tablero[5][j] == tablero[5][j-1] && tablero[5][j] != 0) {
+                contador++;
+            } else {
+                contador = 1;
+            }
+
+            if (contador == 4) {
+                bingo = true;
+                break;
+            }
+        }
+
+    }
 }
 
 public class Main {
@@ -52,6 +70,11 @@ public class Main {
 
         for(;;) {
             conecta4.mostrarTablero();
+            conecta4.comprobarGanador();
+            if (conecta4.bingo) {
+                System.out.println("Ha ganado tal y cual");
+                break;
+            }
             conecta4.pedirColumna();
             conecta4.colocarFicha();
             conecta4.cambiarTurno();
