@@ -3,6 +3,15 @@ import java.util.Scanner;
 class Conecta4 {
     Scanner scanner = new Scanner(System.in);
     int[][] tablero = new int[6][7];
+//    int[][] tablero = {
+//            {0, 0, 0, 1, 0, 0, 0},
+//            {0, 0, 1, 0, 0, 0, 0},
+//            {0, 1, 0, 0, 0, 0, 0},
+//            {1, 0, 0, 0, 0, 0, 0},
+//            {0, 0, 0, 0, 0, 0, 0},
+//            {0, 0, 0, 0, 0, 0, 0}
+//    };
+    
     int columna;
     int jugador = 1;
     boolean bingo;
