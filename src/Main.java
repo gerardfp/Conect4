@@ -89,6 +89,7 @@ class Conecta4 {
             }
         }
 
+        // FIX:
         // Diagonal /
         for (int i = 3; i < 9; i++) {
             int contador = 1;
@@ -105,23 +106,24 @@ class Conecta4 {
                 }
             }
         }
-        
-        // TODO: Diagonal \
-//        for (int i = -3; i < 3; i++) {   \\ <---OK
-//            int contador = 1;
-//
-//            for (int j = Math.max(-i - 4, 1); j <= i - Math.max(6 - i, 0); j++) {
-//                if (tablero[i - j][j] == tablero[i - j + 1][j - 1] && tablero[i - j][j] != 0) {
-//                    contador++;
-//                } else {
-//                    contador = 1;
-//                }
-//                if (contador == 4) {
-//                    bingo = true;
-//                    return;
-//                }
-//            }
-//        }
+
+        // FIX:
+        // Diagonal \
+        for (int i = 3; i < 9; i++) {
+            int contador = 1;
+
+            for (int j = Math.max(7-i, 1); j <= i - Math.min(11-i, 6); j++) {
+                if (tablero[j-(6-i)][j] == tablero[j-(6-i)-1][j - 1] && tablero[j-(6-i)][j] != 0) {
+                    contador++;
+                } else {
+                    contador = 1;
+                }
+                if (contador == 4) {
+                    bingo = true;
+                    return;
+                }
+            }
+        }
     }
 }
 
