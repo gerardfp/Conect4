@@ -45,6 +45,7 @@ class Conecta4 {
     }
 
     void comprobarGanador(){
+        // Horizontal -
         for (int i = 0; i < 6; i++) {
             int contador = 1;
             for (int j = 1; j < 7; j++) {
@@ -61,7 +62,7 @@ class Conecta4 {
             }
         }
 
-
+        // Vertical  |
         for (int j = 0; j < 7; j++) {
             int contador = 1;
             for (int i = 5; i > 0; i--) {
@@ -79,7 +80,39 @@ class Conecta4 {
             }
         }
 
-        // DIAGONAL jajajajaaa
+        // Diagonal /
+        for (int i = 3; i < 9; i++) {
+            int contador = 1;
+
+            for (int j = Math.max(i - 4, 1); j <= i - Math.max(i - 6, 0); j++) {
+                if (tablero[i - j][j] == tablero[i - j + 1][j - 1] && tablero[i - j][j] != 0) {
+                    contador++;
+                } else {
+                    contador = 1;
+                }
+                if (contador == 4) {
+                    bingo = true;
+                    return;
+                }
+            }
+        }
+        
+        // TODO: Diagonal \
+//        for (int i = -3; i < 3; i++) {   \\ <---OK
+//            int contador = 1;
+//
+//            for (int j = Math.max(-i - 4, 1); j <= i - Math.max(6 - i, 0); j++) {
+//                if (tablero[i - j][j] == tablero[i - j + 1][j - 1] && tablero[i - j][j] != 0) {
+//                    contador++;
+//                } else {
+//                    contador = 1;
+//                }
+//                if (contador == 4) {
+//                    bingo = true;
+//                    return;
+//                }
+//            }
+//        }
     }
 }
 
